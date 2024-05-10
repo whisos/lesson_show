@@ -1,4 +1,25 @@
+/* main.css */
+
+/* --- Шрифти --- */
+/* Marck Script - для головної сторінки */
+/* Cormorant Infant - для основного тексту */
+
+/* --- Кольори сайту --- */
+/* блідо-блакитний (#EFFAFD); */
+/* королівський синій (#4A8BDF); */
+/* баклажан (#A0006D). */
+
 *{
     background:#EFFAFD ;
+    font-family: 'Cormorant Infant';
+}
 
+/* шрифт Marck Script */
+.marck-script {
+    font-family: 'Marck Script';
+}
+
+/* шрифт Cormorant Infant*/
+.cormorant-infant {
+    font-family: 'Cormorant Infant';
 }
