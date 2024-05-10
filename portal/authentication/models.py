@@ -27,6 +27,8 @@ class CustomUser(AbstractUser):
         related_name='customuser_set',
         related_query_name='user'
     )
+
+    # Перевірки
     def clean(self):
         super().clean()
         # Перевірка пароля на відповідність вимогам
