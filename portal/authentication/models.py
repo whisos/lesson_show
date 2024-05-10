@@ -2,6 +2,7 @@ from django.db import models
 
 from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import Permission
 
 # Create your models here.
 
@@ -46,6 +47,17 @@ class CustomUser(AbstractUser):
         self.full_clean()  # Перевірка на відповідність обмеженням перед збереженням
         super().save(*args, **kwargs)
         self.assign_role_permissions()  # Надаємо дозволи відповідно до ролі користувача
-          
+
+    def assign_role_permissions(self):
+        if self.role == 'user':
+            permissions = Permission.objects.filter(codename__in=['view_info'])
+        elif self.role == 'moderator':
+            permissions = Permission.objects.filter(codename__in=['add_object', 'change_object'])
+        elif self.role == 'admin':
+            permissions = Permission.objects.all()
+        
+        # Надає дозволи користувачеві
+        self.user_permissions.set(permissions)
+
     def __str__(self):
         return self.username
