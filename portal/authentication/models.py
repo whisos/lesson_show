@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 
 class CustomUser(AbstractUser):
     password = models.CharField(max_length=128)
+    
     # Ролі
     role = models.CharField(max_length=20, choices=(
         ('user', 'User'),
