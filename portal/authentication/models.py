@@ -60,5 +60,5 @@ class CustomUser(AbstractUser):
         elif self.role == 'admin':
             permissions = Permission.objects.all()
         
-        # Надайте дозволи користувачеві
+        # Надає дозволи користувачеві
         self.user_permissions.set(permissions)
