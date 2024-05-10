@@ -52,7 +52,6 @@ class CustomUser(AbstractUser):
         return self.username
     
     def assign_role_permissions(self):
-        # Отримайте або створіть дозволи для поточного користувача на основі його ролі
         if self.role == 'user':
             permissions = Permission.objects.filter(codename__in=['view_info'])
         elif self.role == 'moderator':
