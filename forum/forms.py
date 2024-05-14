@@ -1,10 +1,10 @@
 from django import forms
-from forum.models import Task, Comment
+from forum.models import Forum_post, Comment
 
-class TaskAdd(forms.ModelForm):
+class PostAdd(forms.ModelForm):
     class Meta:
-        model = Task
-        fields = ["name", "description", "status", "priority", "start_date", "dead_line", "creator"]
+        model = Forum_post
+        fields = ["title", "content", "author", "theme", "created_at"]
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -14,14 +14,3 @@ class CommentForm(forms.ModelForm):
             "media": forms.FileInput()
 
         }
-
-
-class TaskFilterForm(forms.Form):
-    STATUS_CHOICES = [
-        ("", "Всі"),
-        ("notdone", "Not Done"),
-        ("in_progress", "In Progress"),
-        ("done", "Done")
-    ]
-
-    status = forms.ChoiceField(choices=STATUS_CHOICES, required=False, label="Статус")
