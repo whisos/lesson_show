@@ -17,8 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from authentication.views import base_view
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', base_view, name='base'),
+    path('', TemplateView.as_view(template_name="main.html")),
 ]
