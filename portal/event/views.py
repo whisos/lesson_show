@@ -5,14 +5,14 @@ from django.http  import HttpResponseRedirect
 
 
 def index(request):
-    return render(request, 'event/base.html')
+    return render(request, 'event/index.html')
 
 from event.forms import EditForm, AddForm
 
 class EventListView(ListView):
     model = Event
     # context_object_name = ""
-    template_name = "event/base.html"
+    template_name = "event/index.html"
 
 class AddCreateView(CreateView):
     model = Event
@@ -40,7 +40,7 @@ def add_evetn(request):
         addtask = Event(name=name, discripton=discripton, time=time, date=date)
         addtask.save()
         
-    return render (request, 'event/base.html')
+    return render (request, 'event/index.html')
 
 def edit_evetn(request):
     if request.method == "POST":
@@ -56,5 +56,5 @@ def edit_evetn(request):
         addtask = Event(name=name, discripton=discripton, time=time, date=date)
         addtask.save()
         
-    return render (request, 'event/base.html')
+    return render (request, 'event/index.html')
 
