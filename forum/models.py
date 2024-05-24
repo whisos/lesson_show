@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 
 class Forum_Theme(models.Model):
     name = models.CharField(max_length=100)
+    description = models.CharField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.name}"
 
 class Forum_post(models.Model):
     title = models.CharField(max_length=100)
@@ -12,6 +16,9 @@ class Forum_post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     theme = models.ForeignKey(Forum_Theme, on_delete=models.CASCADE, related_name='themes')
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.title}"
 
 
 class Comment(models.Model):
