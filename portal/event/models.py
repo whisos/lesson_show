@@ -9,4 +9,5 @@ class Event(models.Model):
     time = models.DateTimeField()
     date = models.DateField()
 
-
+    def __str__(self) -> str:
+        return super().__str__()
