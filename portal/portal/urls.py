@@ -16,9 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from authentication.views import base_view
+from authentication.views import base_view, test_view
+
+from authentication.views import login_view, logout_view, register_view, profile_view, edit_profile_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', base_view, name='base'),
+    # test_view замінити на base_view після завершення тестування
+    path('', test_view, name='base'),
+    
+    # Register --- Login --- Logout #
+    path('register/', register_view, name='register'),
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
+    
+    #--- Profile ---#
+    path('profile/', profile_view, name='profile'),
+    path('profile/edit/', edit_profile_view, name='edit_profile'),
+    
+    path('test/', test_view, name='test'),
 ]

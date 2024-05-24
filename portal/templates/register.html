@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+    <div class="popup-form" id="registerPopupForm" style="display: none;">
+        <h2>Registration</h2>
+        <form id="registerForm" action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <div>
+                <label for="id_username">Username:</label>
+                <input type="text" name="username" id="id_username" maxlength="150" required>
+            </div>
+            <div>
+                <label for="id_email">Email:</label>
+                <input type="email" name="email" id="id_email" required>
+            </div>
+            <div>
+                <label for="id_first_name">First name:</label>
+                <input type="text" name="first_name" id="id_first_name">
+            </div>
+            <div>
+                <label for="id_last_name">Last name:</label>
+                <input type="text" name="last_name" id="id_last_name">
+            </div>
+            <div>
+                <label for="id_password1">Password:</label>
+                <input type="password" name="password1" id="id_password1" required>
+            </div>
+            <div>
+                <label for="id_password2">Password confirmation:</label>
+                <input type="password" name="password2" id="id_password2" required>
+            </div>
+            <div>
+                <button type="submit">Register</button>
+                <button type="button" id="closeBtn">Close</button>
+            </div>
+        </form>
+    </div>
+    <button id="registerBtn">Register</button>
+</body>
+</html>
+
