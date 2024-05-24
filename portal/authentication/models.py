@@ -33,20 +33,41 @@ class CustomUser(AbstractUser):
     )
 
     # Перевірки
+
+    # Перевірка пароля на відповідність вимогам
     def clean(self):
         super().clean()
-        # Перевірка пароля на відповідність вимогам
         if len(self.password) < 8:
             raise ValidationError("Your password must contain at least 8 characters.")
         if self.password.isdigit():
             raise ValidationError("Your password can’t be entirely numeric.")
+        if self.password.isalpha():
+            raise ValidationError("Your password must contain at least one digit.")
+        if self.password.islower() or self.password.isupper():
+            raise ValidationError("Your password must contain both uppercase and lowercase letters.")
+        if not any(char.isdigit() for char in self.password):
+            raise ValidationError("Your password must contain at least one digit.")
+        if not any(char.isupper() for char in self.password) or not any(char.islower() for char in self.password):
+            raise ValidationError("Your password must contain both uppercase and lowercase letters.")
+        if not any(char.isalnum() for char in self.password):
+            raise ValidationError("Your password must contain at least one special character.")
+        if self.password.lower() in ['password', '123456', 'qwerty']:
+            raise ValidationError("Your password is too common.")
     
     def save(self, *args, **kwargs):
-        if not self.id:  # Якщо це новий користувач
+        if not self.id:
             self.set_password(self.password)  # Викликаємо set_password для створення хешу паролю
         self.full_clean()  # Перевірка на відповідність обмеженням перед збереженням
+        
+        if (
+            'username' in kwargs or 'first_name' in kwargs or 'last_name' in kwargs or
+            'email' in kwargs or 'role' in kwargs
+        ):
+            self.full_clean()
+
         super().save(*args, **kwargs)
-        self.assign_role_permissions()  # Надаємо дозволи відповідно до ролі користувача
+        self.assign_role_permissions()  # Надаємо дозволи
+
 
     def assign_role_permissions(self):
         if self.role == 'user':
