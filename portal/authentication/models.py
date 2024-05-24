@@ -55,19 +55,18 @@ class CustomUser(AbstractUser):
             raise ValidationError("Your password is too common.")
     
     def save(self, *args, **kwargs):
-        if not self.id:  # Якщо це новий користувач
+        if not self.id:
             self.set_password(self.password)  # Викликаємо set_password для створення хешу паролю
         self.full_clean()  # Перевірка на відповідність обмеженням перед збереженням
         
-        # Перевіряємо, чи будь-які дані користувача були змінені
         if (
             'username' in kwargs or 'first_name' in kwargs or 'last_name' in kwargs or
             'email' in kwargs or 'role' in kwargs
         ):
-            self.full_clean()  # Перевірка на відповідність обмеженням після зміни даних користувача
+            self.full_clean()
 
         super().save(*args, **kwargs)
-        self.assign_role_permissions()  # Надаємо дозволи відповідно до ролі користувача
+        self.assign_role_permissions()  # Надаємо дозволи
 
 
     def assign_role_permissions(self):
