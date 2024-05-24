@@ -34,7 +34,7 @@ def register_view(request):
         
         if password1 == password2:
             try:
-                user = CustomUser.objects.create_user(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
+                user = User.objects.create_user(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
                 login(request, user)  # Вхід користувача в систему після реєстрації
                 return redirect('base')
             except IntegrityError:
