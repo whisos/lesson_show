@@ -57,4 +57,3 @@ def edit_evetn(request):
         addtask.save()
         
     return render (request, 'event/index.html')
-
