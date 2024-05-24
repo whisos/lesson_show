@@ -8,3 +8,6 @@ class Event(models.Model):
     discription = models.CharField(max_length=150)
     time = models.DateTimeField()
     date = models.DateField()
+
+    def __str__(self) -> str:
+        return super().__str__()
