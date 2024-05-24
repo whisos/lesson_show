@@ -24,6 +24,7 @@ def test_view(request):
 # Register --- Login --- Logout #
 
 def register_view(request):
+    error_message = None
     if request.method == 'POST':
         username = request.POST.get('username')
         password1 = request.POST.get('password1')
@@ -38,21 +39,26 @@ def register_view(request):
                 login(request, user)  # Вхід користувача в систему після реєстрації
                 return redirect('base')
             except IntegrityError:
-                return HttpResponse("Ім'я користувача вже існує. Будь ласка, виберіть інше ім'я користувача.")
+                error_message = "Ім'я користувача вже існує. Будь ласка, виберіть інше ім'я користувача."
+                return render(request, 'register.html', {'error_message': error_message})
         else:
-            return HttpResponse("Паролі не співпадають.")
+            error_message = "Паролі не співпадають."
+            return render(request, 'register.html', {'error_message': error_message})
     return render(request, 'register.html')
 
 def login_view(request):
+    error_message = None
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user)
             return redirect('base')
+        else:
+            error_message = "Неправильне ім'я користувача або пароль. Будь ласка, спробуйте ще раз."
     else:
         form = AuthenticationForm()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'login.html', {'form': form, 'error_message': error_message})
 
 def logout_view(request):
     logout(request)

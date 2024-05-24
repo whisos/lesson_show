@@ -12,6 +12,14 @@
         <h2>Registration</h2>
         <form id="registerForm" action="{% url 'register' %}" method="post">
             {% csrf_token %}
+            
+            <!-- Вивід повідомлення про помилку, якщо таке є -->
+            {% if error_message %}
+            <div class="error-message">
+                {{ error_message }}
+            </div>
+            {% endif %}
+
             <div>
                 <label for="id_username">Username:</label>
                 <input type="text" name="username" id="id_username" maxlength="150" required>
