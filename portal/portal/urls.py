@@ -22,8 +22,8 @@ from authentication.views import login_view, logout_view, register_view, profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # test_view замінити на base_view після завершення тестування
-    path('', test_view, name='base'),
+
+    path('', base_view, name='base'),
     
     # Register --- Login --- Logout #
     path('register/', register_view, name='register'),
@@ -33,6 +33,4 @@ urlpatterns = [
     #--- Profile ---#
     path('profile/', profile_view, name='profile'),
     path('profile/edit/', edit_profile_view, name='edit_profile'),
-    
-    path('test/', test_view, name='test'),
 ]

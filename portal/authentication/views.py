@@ -17,10 +17,6 @@ from django.db import IntegrityError
 def base_view(request):
     return render(request, 'base.html')
 
-
-def test_view(request):
-    return render(request, 'test.html')
-
 # Register --- Login --- Logout #
 
 def register_view(request):
