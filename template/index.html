@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт з подіями</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Події</h1>
+        <a href="{% url 'add' %}">Додати подію</a>
+        
+        <ul>
+            <li>
+                <!-- {% block content %}
+
+                {% for task in tasks %}
+                <div class="card">
+                <p>{{Event.discription}}</p>
+                <p>{{Event.name}}</p>
+                </div>
+                {% endfor %}
+
+                {% endblock %} -->
+                <a href="{% url 'edit' %}">Редагувати</a>
+            </li>
+            <li>
+                <h3></h3>
+                <p></p>
+                <p></p>
+            </li>
+            <!-- Додайте інші події тут -->
+        </ul>
+    </div>
+</body>
+</html>
