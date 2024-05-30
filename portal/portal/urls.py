@@ -35,4 +35,7 @@ urlpatterns = [
 
     #--- Events ---#
     path('event/', include('event.urls')),
+
+    # Voting polls #
+    path('polls/', include('voting.urls')),
 ]
