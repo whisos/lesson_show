@@ -1,9 +1,10 @@
 from django.urls import path
-from voting.views import VotingPollListView, VotingPollDetailView, VotingPollCreateView, VotingPollDeleteView
+import voting.views as voting
 
 urlpatterns = [
-    path('', VotingPollListView.as_view(), name="voting_list"),
-    path('<int:pk>/', VotingPollDetailView.as_view(), name="voting_poll"),
-    path('<int:pk>/delete', VotingPollDeleteView.as_view(), name="delete_poll"),
-    path('create/', VotingPollCreateView.as_view(), name="create_poll"),
+    path('', voting.PollListView.as_view(), name="voting_list"),
+    path('<int:pk>/', voting.PollDetailView.as_view(), name="voting_poll"),
+    path('<int:pk>/delete', voting.PollDeleteView.as_view(), name="delete_poll"),
+    path('<int:pk>/vote', voting.PollVote.as_view(), name="vote_poll"),
+    path('create/', voting.PollCreateView.as_view(), name="create_poll"),
 ]

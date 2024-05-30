@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 {% block title %}{{object.text}}{% endblock title %}
 {% block content %}
-<p>{{object.text}}, {{object.published_on}}</p>
-{% for choice in object.choices.all %}
-    <p>{{choice.text}}</p>
-{% endfor %}
+    <p>{{object.text}}, {{object.published_on}}</p>
+    <form method="post" action="{% url 'vote_poll' object.pk%}">
+        {% csrf_token %}
+        {% for choice in object.choices.all %}
+            <input type="radio" id="{{choice.pk}}" name="choice" value={{choice.pk}} {% if voted == choice.pk %}checked{% endif %}>
+            <label class="voted" for="{{choice.pk}}">{{choice.text}}</label>
+        {% endfor %}
+        <button type="submit">Проголосувати</button>
+        <p>{{debug}}</p>
+    </form>
 {% endblock content %}
