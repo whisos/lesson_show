@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from voting.models import VotingPoll, VotingChoice, Vote
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView
+from django.urls import reverse_lazy
 
 
 class VotingPollListView(ListView):
@@ -43,3 +44,9 @@ class VotingPollCreateView(CreateView):
             )
             choice.save()
         return redirect("voting_poll", pk=voting_poll.pk)
+
+
+class VotingPollDeleteView(DeleteView):
+    model = VotingPoll
+    template_name = "voting/poll_delete_confirmation.html"
+    success_url = reverse_lazy("voting_list")
