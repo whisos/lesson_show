@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт з подіями</title>
+{% extends "base.html" %}
+{% block title %}Сайт з подіями{% endblock title %}
+{% block additional_css %}
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -34,9 +31,8 @@
             border-radius: 4px;
         }
     </style>
-</head>
-<body>
-    <div class="container">
+{% endblock additional_css %}
+{% block content %}
         <h1>Події</h1>
         <a href="{% url 'add' %}">Додати подію</a>
         
@@ -61,6 +57,4 @@
             </li>
             <!-- Додайте інші події тут -->
         </ul>
-    </div>
-</body>
-</html>
+{% endblock content %}
