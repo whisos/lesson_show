@@ -1,5 +1,6 @@
 from django.db import models
 from authentication.models import CustomUser
+from django.contrib.auth.models import User  # temporarily
 
 
 class VotingPoll(models.Model):
@@ -27,4 +28,4 @@ class Vote(models.Model):
     choice = models.ForeignKey(
         VotingChoice, on_delete=models.CASCADE, related_name="votes"
     )
-    voter = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    voter = models.ForeignKey(User, on_delete=models.CASCADE) #will be CustomUser in the future
