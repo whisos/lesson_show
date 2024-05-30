@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Редагування події</title>
+{% extends "base.html" %}
+{% block title %}Редагування події{% endblock title %}
+{% block additional_css %}
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,9 +42,8 @@
             cursor: pointer;
         }
     </style>
-</head>
-<body>
-    <div class="container">
+{% endblock additional_css %}
+{% block content %}
         <h1>Редагування події</h1>
         <form id="editEventForm">
             <label for="eventTitle">Назва події:</label>
@@ -64,6 +60,4 @@
 
             <a href="{% url 'event_list' %}">Зберегти зміни</a>
         </form>
-    </div>
-</body>
-</html>
+{% endblock content %}
