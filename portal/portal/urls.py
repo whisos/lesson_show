@@ -22,7 +22,7 @@ from authentication.views import base_view, login_view, logout_view, register_vi
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', TemplateView.as_view(template_name="main.html")),
+    path('', TemplateView.as_view(template_name="main.html"), name="main_page"),
     
     # Register --- Login --- Logout #
     path('register/', register_view, name='register'),
