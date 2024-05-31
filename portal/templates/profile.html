@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block additional_css %}<link rel="stylesheet" href="{% static 'css/profile.css' %}">{% endblock additional_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
 {% block title %}Profile{% endblock title %}
 {% block content %}
     <h1>Profile of {{ user.username }}</h1>
