@@ -56,3 +56,19 @@
 .edit-profile-form input[type="submit"]:hover {
     background-color: #3262a8;
 }
+
+
+
+/* Медіа-запит для екранів ширше за 768px */
+@media screen and (min-width: 768px) {
+    .popup-form {
+        width: 400px;
+    }
+}
+
+/* Медіа-запит для екранів ширше за 992px */
+@media screen and (min-width: 992px) {
+    .popup-form {
+        width: 500px;
+    }
+}

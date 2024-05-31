@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Login Form{% endblock title %}
-{% block additional_css %}<link rel="stylesheet" href="{% static 'css/login.css' %}">{% endblock additional_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% block content %}
     <div class="popup-form" id="popupForm">
         <h2>Login</h2>
         <form action="{% url 'login' %}" method="post">
             {% csrf_token %}
             
-            <!-- Вивід повідомлення про помилку, якщо таке є -->
+            <!-- Вивід повідомлення про помилку, якщо таке є -->            
             {% if error_message %}
             <div class="error-message">
                 {{ error_message }}

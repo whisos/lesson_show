@@ -69,9 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorMessage = document.querySelector('.error-message');
     const registerPopupForm = document.getElementById('registerPopupForm');
     
-    // Перевірка наявності повідомлення про помилку
     if (errorMessage) {
-        // Якщо повідомлення про помилку присутнє, відкрийте або залиште відкритою popup форму
         registerPopupForm.style.display = 'block';
     }
 });
