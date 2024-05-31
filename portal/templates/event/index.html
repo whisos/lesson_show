@@ -8,7 +8,7 @@
             margin: 0;
             padding: 0;
         }
-        .container {
+        .container-event {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
@@ -20,11 +20,11 @@
             text-align: center;
             color: #333;
         }
-        ul {
+        .event-ul {
             list-style: none;
             padding: 0;
         }
-        li {
+        .event-li {
             margin-bottom: 10px;
             padding: 10px;
             background-color: #f0f0f0;
@@ -34,23 +34,20 @@
 {% endblock additional_css %}
 {% block content %}
         <h1>Події</h1>
-        <a href="{% url 'add' %}">Додати подію</a>
-        
-        <ul>
-            <li>
+        <a href="{% url 'add' %}" class="col-12 btn btn-primary mb-2">Додати подію</a>
 
-                {% for event in object_list %}
+        <ul class="event-ul">
+        {% for event in object_list %}
+            <li class="event-li">
                 <div class="card">
                 <p>{{event.name}}</p>
                 <p>{{event.discription}}</p>
                 <p>{{event.time}}</p>
                 <p>{{event.date}}</p>
                 </div>
-                {% endfor %}
-
-                <a href="{% url 'edit' %}">Редагувати</a>
             </li>
-            
+         {% endfor %}
+         </ul>
 
-        </ul>
+         <a href="{% url 'edit' %}">Редагувати</a>
 {% endblock content %}
