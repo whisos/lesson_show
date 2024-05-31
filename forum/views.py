@@ -12,14 +12,14 @@ class Forum_Themes_View(ListView):
     model = Forum_Theme
     context_object_name = "themes"
     template_name = "forum/themes_list.html"
-    paginate_by = 3
+    paginate_by = 5
     
 
 class Posts_View(LoginRequiredMixin, ListView):
     model = Forum_post
     template_name = "forum/posts_list.html"
     context_object_name = "post"
-    paginate_by = 2
+    paginate_by = 4
     
     def get_queryset(self):
         theme_pk = self.kwargs.get('pk')
@@ -46,9 +46,9 @@ class Post_Detail_View(LoginRequiredMixin, DetailView):
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.author = request.user
-            comment.task = self.get_object()
+            comment.post = self.get_object()
             comment.save()
-            #return redirect('tasktrack:task_detail', pk=comment.task.pk)
+            return redirect('forum:post_detail', pk=comment.post.pk)
 
 class CommentLikeToggle(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
@@ -61,11 +61,11 @@ class CommentLikeToggle(LoginRequiredMixin, View):
             like.delete()
 
        
-        return redirect('tasktrack:task_detail', pk=comment.task.id)
+        return redirect('forum:post_detail', pk=comment.post.id)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context ["comments"] = Comment.objects.filter(task=self.get_object())
+        context ["comments"] = Comment.objects.filter(post=self.get_object())
         return context
 
 class ThemeAddView(LoginRequiredMixin, CreateView):

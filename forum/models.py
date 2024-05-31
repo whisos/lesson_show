@@ -22,14 +22,14 @@ class Forum_post(models.Model):
 
 
 class Comment(models.Model):
-    task = models.ForeignKey(Forum_post, on_delete=models.CASCADE, related_name='comments')
+    post = models.ForeignKey(Forum_post, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     media = models.FileField(upload_to='comments_media/',blank = True, null =True)
 
     def get_absolute_url(self):
-        return self.task.get_absolute_url()
+        return self.post.get_absolute_url()
 
 class Like(models.Model):
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='likes')
