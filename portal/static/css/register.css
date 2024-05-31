@@ -23,10 +23,15 @@
     margin-bottom: 20px;
 }
 
+.popup-form form {
+    display: flex;
+    flex-direction: column;
+}
+
 .popup-form label {
-    display: block;
-    margin-bottom: 10px;
     font-weight: bold;
+    width: 100%;
+    margin: 5px;
 }
 
 .popup-form input[type="text"],
@@ -34,12 +39,11 @@
 .popup-form input[type="password"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
 }
-
 .popup-form button {
     width: 100%;
     padding: 10px;
@@ -52,4 +56,20 @@
 
 .popup-form button:hover {
     background-color: #3262a8;
+}
+
+
+
+/* Медіа-запит для екранів ширше за 768px */
+@media screen and (min-width: 768px) {
+    .popup-form {
+        width: 400px;
+    }
+}
+
+/* Медіа-запит для екранів ширше за 992px */
+@media screen and (min-width: 992px) {
+    .popup-form {
+        width: 500px;
+    }
 }
