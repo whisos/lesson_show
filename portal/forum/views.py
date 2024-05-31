@@ -72,19 +72,19 @@ class ThemeAddView(LoginRequiredMixin, CreateView):
     model = Forum_Theme
     template_name = "forum/theme_add.html"
     form_class = ThemeAdd
-    success_url = reverse_lazy("themes_list")
+    success_url = reverse_lazy("forum:themes_list")
 
 class ThemeUpdateView(LoginRequiredMixin, UpdateView):
     model = Forum_Theme
     template_name = "forum/theme_update.html"
     form_class = ThemeAdd
-    success_url = reverse_lazy("themes_list")
+    success_url = reverse_lazy("forum:themes_list")
 
 class PostAddView(LoginRequiredMixin, CreateView):
     model = Forum_post
     template_name = "forum/post_add.html"
     form_class = PostAdd
-    success_url = reverse_lazy("themes_list")
+    success_url = reverse_lazy("forum:themes_list")
 
     def get_initial(self):
         initial = super().get_initial()
@@ -103,15 +103,15 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Forum_post
     template_name = "forum/post_update.html"
     form_class = PostAdd
-    success_url = reverse_lazy("themes_list")
+    success_url = reverse_lazy("forum:themes_list")
 
 class PostDeleteView(LoginRequiredMixin, UserIsOwnerMixin, DeleteView):
     model = Forum_post
     template_name = "forum/post_delete.html"
-    success_url = reverse_lazy("themes_list")
+    success_url = reverse_lazy("forum:themes_list")
 
 class CommentAddView(LoginRequiredMixin, CreateView):
     model = Comment
     template_name = "forum/comment_add.html"
     form_class = CommentForm
-    success_url = reverse_lazy("themes_list")
+    success_url = reverse_lazy("forum:themes_list")
