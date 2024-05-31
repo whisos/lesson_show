@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
 {% block title %}Registration Form{% endblock title %}
-{% block additional_css %}<link rel="stylesheet" href="{% static 'css/register.css' %}">{% endblock additional_css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
 {% block content %}
-    <div class="popup-form" id="registerPopupForm" style="display: none;">
+    <div class="popup-form" id="registerPopupForm">
         <h2>Registration</h2>
         <form id="registerForm" action="{% url 'register' %}" method="post">
             {% csrf_token %}
@@ -17,35 +16,33 @@
             {% endif %}
 
             <div>
-                <label for="id_username">Username:</label>
-                <input type="text" name="username" id="id_username" maxlength="150" required>
+                <label for="id_username" class="form-label">Username:</label>
+                <input type="text" name="username" id="id_username" maxlength="150" class="form-control" required>
             </div>
             <div>
-                <label for="id_email">Email:</label>
-                <input type="email" name="email" id="id_email" required>
+                <label for="id_email" class="form-label">Email:</label>
+                <input type="email" name="email" id="id_email" class="form-control" required>
             </div>
             <div>
-                <label for="id_first_name">First name:</label>
-                <input type="text" name="first_name" id="id_first_name">
+                <label for="id_first_name" class="form-label">First name:</label>
+                <input type="text" name="first_name" class="form-control" id="id_first_name">
             </div>
             <div>
-                <label for="id_last_name">Last name:</label>
-                <input type="text" name="last_name" id="id_last_name">
+                <label for="id_last_name" class="form-label">Last name:</label>
+                <input type="text" name="last_name" class="form-control" id="id_last_name">
             </div>
             <div>
-                <label for="id_password1">Password:</label>
-                <input type="password" name="password1" id="id_password1" required>
+                <label for="id_password1" class="form-label">Password:</label>
+                <input type="password" name="password1" class="form-control" id="id_password1" required>
             </div>
             <div>
-                <label for="id_password2">Password confirmation:</label>
-                <input type="password" name="password2" id="id_password2" required>
+                <label for="id_password2" class="form-label">Password confirmation:</label>
+                <input type="password" name="password2" class="form-control" id="id_password2" required>
             </div>
             <div>
-                <button type="submit">Register</button>
-                <button type="button" id="closeBtn">Close</button>
+                <button type="submit" class="btn btn-primary mt-2">Register</button>
             </div>
         </form>
     </div>
-    <button id="registerBtn">Register</button>
 {% endblock content %}
 

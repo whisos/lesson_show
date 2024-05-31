@@ -8,7 +8,7 @@
             margin: 0;
             padding: 0;
         }
-        .container {
+        .container-event {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
@@ -43,7 +43,10 @@
         }
     </style>
 {% endblock additional_css %}
-{% block content %}
+{% block content %} 
+    <form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    <div class="container container-event">
         <h1>Редагування події</h1>
         <form id="editEventForm">
             <label for="eventTitle">Назва події:</label>
@@ -60,4 +63,5 @@
 
             <a href="{% url 'event_list' %}">Зберегти зміни</a>
         </form>
+    </div>
 {% endblock content %}
