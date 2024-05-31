@@ -4,7 +4,7 @@ from forum.models import Forum_post, Comment, Forum_Theme
 class PostAdd(forms.ModelForm):
     class Meta:
         model = Forum_post
-        fields = ["title", "content", "author", "theme"]
+        fields = ["title", "content", "theme"]
 
         widgets = {
             'theme': forms.HiddenInput()
@@ -13,11 +13,7 @@ class PostAdd(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ["content", "media"]
-        widgets = {
-            "media": forms.FileInput()
-
-        }
+        fields = ["content"]
 
 class ThemeAdd(forms.ModelForm):
     class Meta:

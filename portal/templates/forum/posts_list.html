@@ -2,22 +2,21 @@
     
     
     {% block content %}
-    <div class="row main-content" style="min-height: 400px;">
+    <div class="row main-content">
         <div class="col">
             <h1>Посты на тему: {{ theme.name }}</h1>
-            <a href="{% url 'forum:post_add' %}?theme={{ theme.pk }}"><h2>Создать новый пост</h2></a>
+            <a href="{% url 'forum:post_add' %}?theme={{ theme.pk }}"><h3>Создать новый пост</h3></a>
             {% for post in post %}
-                <div class="card" style="width: 18rem; display: inline-block;">
+                <div class="card" style="width: 18rem;">
                     <div class="card-body">
                       <a href="{% url 'forum:post_detail' post.pk %}"><h5 class="card-title">{{ post.title }}</h5></a>
-                      <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.author }}</h6>
-                      <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.created_at }}</h6>
+                      <small-text class="card-subtitle mb-2 text-body-secondary">{{ post.author }}</small-text>
+                      <small-text class="card-subtitle mb-2 text-body-secondary">{{ post.created_at }}</small-text>
                       <a href="{% url 'forum:post_update' post.pk %}"><h6 class="card-subtitle mb-2 text-body-secondary">Изменить пост</h6></a>
                     </div>
                 </div>
 
             {% endfor %}
-            <a href="{% url 'forum:themes_list' %}"><h2>Главная</h2></a>
         </div>
     </div>
 
@@ -46,4 +45,3 @@
         </div>
     </div>
     {% endblock %}
-

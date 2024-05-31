@@ -12,14 +12,14 @@ class Forum_Themes_View(ListView):
     model = Forum_Theme
     context_object_name = "themes"
     template_name = "forum/themes_list.html"
-    paginate_by = 5
+    paginate_by = 7
     
 
 class Posts_View(LoginRequiredMixin, ListView):
     model = Forum_post
     template_name = "forum/posts_list.html"
     context_object_name = "post"
-    paginate_by = 4
+    paginate_by = 6
     
     def get_queryset(self):
         theme_pk = self.kwargs.get('pk')
@@ -99,7 +99,7 @@ class PostAddView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse_lazy('forum:posts_list', kwargs={'pk': self.object.theme.pk})
 
-class PostUpdateView(LoginRequiredMixin, UpdateView):
+class PostUpdateView(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
     model = Forum_post
     template_name = "forum/post_update.html"
     form_class = PostAdd
