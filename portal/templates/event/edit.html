@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Редагування події{% endblock title %}
+{% block additional_css %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+{% endblock additional_css %}
+{% block content %}
+        <h1>Редагування події</h1>
+        <form id="editEventForm">
+            <label for="eventTitle">Назва події:</label>
+            <input type="text" id="eventTitle" name="eventTitle" value=""><br>
+
+            <label for="eventDescription">Опис події:</label>
+            <textarea id="eventDescription" name="eventDescription"></textarea><br>
+
+            <label for="eventTime">Час:</label><br>
+            <input type="time" id="time" name="time"><br>
+
+            <label for="eventDate">Дата події:</label>
+            <input type="date" id="eventDate" name="eventDate" value="2024-03-10"><br>
+
+            <a href="{% url 'event_list' %}">Зберегти зміни</a>
+        </form>
+{% endblock content %}

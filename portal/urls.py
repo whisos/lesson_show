@@ -16,10 +16,29 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls.static import static
-from django.conf import settings
+from django.views.generic import TemplateView
+from authentication.views import base_view, login_view, logout_view, register_view, profile_view, edit_profile_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('', TemplateView.as_view(template_name="main.html"), name="main_page"),
+
+    # Register --- Login --- Logout #
+    path('register/', register_view, name='register'),
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
+
+    #--- Profile ---#
+    path('profile/', profile_view, name='profile'),
+    path('profile/edit/', edit_profile_view, name='edit_profile'),
+
+    #--- Events ---#
+    path('event/', include('event.urls')),
+
+    # Voting polls #
+    path('polls/', include('voting.urls')),
+
+    # Forum #
     path('', include('forum.urls'))
 ]

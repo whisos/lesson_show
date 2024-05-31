@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Login Form{% endblock title %}
+{% block additional_css %}<link rel="stylesheet" href="{% static 'css/login.css' %}">{% endblock additional_css %}
+{% block content %}
+    <div class="popup-form" id="popupForm">
+        <h2>Login</h2>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            
+            <!-- Вивід повідомлення про помилку, якщо таке є -->
+            {% if error_message %}
+            <div class="error-message">
+                {{ error_message }}
+            </div>
+            {% endif %}
+
+            <div>
+                <label for="id_username">Username:</label>
+                <input type="text" name="username" id="id_username" required>
+            </div>
+            <div>
+                <label for="id_password">Password:</label>
+                <input type="password" name="password" id="id_password" required>
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

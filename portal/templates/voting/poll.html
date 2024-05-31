@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}{{object.text}}{% endblock title %}
+{% block content %}
+<p>{{object.text}}, {{object.published_on}}</p>
+{% for choice in object.choices.all %}
+    <p>{{choice.text}}</p>
+{% endfor %}
+{% endblock content %}
