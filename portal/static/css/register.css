@@ -1,40 +1,38 @@
 /* register.css */
 
-/* Загальні стилі для сторінки реєстрації */
-.register-container {
-    margin: 50px auto;
-    max-width: 600px;
+/* Загальні стилі для форми */
+.popup-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
 }
 
-.register-header {
+.popup-form h2 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.register-header h2 {
-    font-family: 'Marck Script';
-    color: #4A8BDF;
+.popup-form .error-message {
+    color: red;
+    margin-bottom: 20px;
 }
 
-.register-form {
-    font-family: 'Cormorant Infant';
-    font-size: 18px;
-    color: #000;
-}
-
-.register-form label {
+.popup-form label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
-.register-form input[type="text"],
-.register-form input[type="email"],
-.register-form input[type="password"] {
+.popup-form input[type="text"],
+.popup-form input[type="email"],
+.popup-form input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -43,7 +41,7 @@
     box-sizing: border-box;
 }
 
-.register-form input[type="submit"] {
+.popup-form button {
     width: 100%;
     padding: 10px;
     background-color: #4A8BDF;
@@ -53,6 +51,6 @@
     cursor: pointer;
 }
 
-.register-form input[type="submit"]:hover {
+.popup-form button:hover {
     background-color: #3262a8;
 }

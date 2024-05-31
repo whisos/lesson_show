@@ -8,14 +8,14 @@
         <a href={% url 'profile' %} class="nav-link">Мій профіль</a>
     </li>
     <li class="nav-item">
-        <a href={% url 'logout' %} class="nav-link">Вийти з акаунту</a>
+        <a href={% url 'logout' %} class="nav-link logout-btn">Вийти з акаунту</a>
     </li>
     {% else %}
     <li class="nav-item">
-        <a href={% url 'register' %} class="nav-link">Зареєструватися</a>
+        <a href={% url 'register' %} class="nav-link" id="registerBtn">Зареєструватися</a>
     </li>
     <li class="nav-item">
-        <a href={% url 'login' %} class="nav-link">Увійти в акаунт</a>
+        <a href={% url 'login' %} class="nav-link" id="loginBtn">Увійти в акаунт</a>
     </li>
     {% endif %}
     <li class="nav-item">
