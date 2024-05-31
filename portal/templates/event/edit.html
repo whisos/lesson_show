@@ -47,6 +47,9 @@
     </style>
 </head>
 <body>
+    {% block content %} 
+    <form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
     <div class="container">
         <h1>Редагування події</h1>
         <form id="editEventForm">
@@ -65,5 +68,6 @@
             <a href="{% url 'event_list' %}">Зберегти зміни</a>
         </form>
     </div>
+    {% endblock %}
 </body>
 </html>

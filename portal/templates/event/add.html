@@ -47,6 +47,9 @@
     </style>
 </head>
 <body>
+    {% block content %} 
+    <form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
     <div class="container">
         <h1>Додайте подію</h1>
         <form id="editEventForm">
@@ -65,5 +68,6 @@
             <!-- <input type="submit" value="Зберегти зміни"> -->
         </form>
     </div>
+    {% endblock %}
 </body>
 </html>
