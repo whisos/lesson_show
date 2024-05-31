@@ -40,5 +40,5 @@ urlpatterns = [
     path('polls/', include('voting.urls')),
 
     # Forum #
-    path('', include('forum.urls'))
+    path('forum/', include('forum.urls'))
 ]
