@@ -20,11 +20,11 @@
             text-align: center;
             color: #333;
         }
-        ul {
+        .event-ul {
             list-style: none;
             padding: 0;
         }
-        li {
+        .event-li {
             margin-bottom: 10px;
             padding: 10px;
             background-color: #f0f0f0;
@@ -36,21 +36,17 @@
         <h1>Події</h1>
         <a href="{% url 'add' %}">Додати подію</a>
         
-        <ul>
-            <li>
-
-                {% for task in tasks %}
+        <ul class="event-ul">
+            {% for task in tasks %}
+            <li class="event-li">
                 <div class="card">
                 <p>{{Event.name}}</p>
                 <p>{{Event.discription}}</p>
                 <p>{{Event.time}}</p>
                 <p>{{Event.date}}</p>
                 </div>
-                {% endfor %}
-
-                <a href="{% url 'edit' %}">Редагувати</a>
             </li>
-            
-
+            {% endfor %}
         </ul>
+        <a href="{% url 'edit' %}">Редагувати</a>
 {% endblock content %}
