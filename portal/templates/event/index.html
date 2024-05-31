@@ -39,12 +39,12 @@
         <ul>
             <li>
 
-                {% for task in tasks %}
+                {% for event in object_list %}
                 <div class="card">
-                <p>{{Event.name}}</p>
-                <p>{{Event.discription}}</p>
-                <p>{{Event.time}}</p>
-                <p>{{Event.date}}</p>
+                <p>{{event.name}}</p>
+                <p>{{event.discription}}</p>
+                <p>{{event.time}}</p>
+                <p>{{event.date}}</p>
                 </div>
                 {% endfor %}
 
