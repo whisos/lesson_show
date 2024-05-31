@@ -33,7 +33,7 @@ def register_view(request):
             try:
                 user = User.objects.create_user(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
                 login(request, user)  # Вхід користувача в систему після реєстрації
-                return redirect('base')
+                return redirect('main_page')
             except IntegrityError:
                 error_message = "Ім'я користувача вже існує. Будь ласка, виберіть інше ім'я користувача."
                 return render(request, 'register.html', {'error_message': error_message})
@@ -49,7 +49,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user)
-            return redirect('base')
+            return redirect('main_page')
         else:
             error_message = "Неправильне ім'я користувача або пароль. Будь ласка, спробуйте ще раз."
     else:
@@ -58,7 +58,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect(reverse_lazy('base'))
+    return redirect(reverse_lazy('main_page'))
 
 
 # --- Profile --- #

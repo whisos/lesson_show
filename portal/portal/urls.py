@@ -22,17 +22,23 @@ from authentication.views import base_view, login_view, logout_view, register_vi
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', TemplateView.as_view(template_name="main.html")),
-    
+    path('', TemplateView.as_view(template_name="main.html"), name="main_page"),
+
     # Register --- Login --- Logout #
     path('register/', register_view, name='register'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
-    
+
     #--- Profile ---#
     path('profile/', profile_view, name='profile'),
     path('profile/edit/', edit_profile_view, name='edit_profile'),
 
     #--- Events ---#
     path('event/', include('event.urls')),
+
+    # Voting polls #
+    path('polls/', include('voting.urls')),
+
+    # Forum #
+    path('forum/', include('forum.urls'))
 ]

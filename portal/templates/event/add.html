@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Додайте подію</title>
+{% extends "base.html" %}
+{% block title %} Додайте подію {% endblock title %}
+
+{% block additional_css %}
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,9 +43,10 @@
             cursor: pointer;
         }
     </style>
-</head>
-<body>
-    {% block content %} 
+
+{% endblock additional_css %}
+
+{% block content %}
     <form action="{% url 'index' %}" method="post">
     {% csrf_token %}
     <div class="container">
@@ -68,6 +67,4 @@
             <!-- <input type="submit" value="Зберегти зміни"> -->
         </form>
     </div>
-    {% endblock %}
-</body>
-</html>
+{% endblock content %}

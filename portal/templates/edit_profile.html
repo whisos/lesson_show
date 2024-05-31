@@ -1,13 +1,8 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
-    <title>Edit Profile</title>
-</head>
-<body>
+{% block additional_css %}<link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">{% endblock additional_css %}
+{% block title %}Edit Profile{% endblock title %}
+{% block content %}
     <h1>Edit Profile</h1>
     <form method="post" action="{% url 'edit_profile' %}">
         {% csrf_token %}
@@ -25,5 +20,4 @@
 
         <button type="submit">Save changes</button>
     </form>
-</body>
-</html>
+{% endblock content %}
