@@ -42,8 +42,9 @@
             cursor: pointer;
         }
     </style>
-{% endblock additional_css %}
-{% block content %} 
+</head>
+<body>
+    {% block content %} 
     <form action="{% url 'index' %}" method="post">
     {% csrf_token %}
     <div class="container container-event">

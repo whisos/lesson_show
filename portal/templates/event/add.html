@@ -43,11 +43,11 @@
             cursor: pointer;
         }
     </style>
-
-{% endblock additional_css %}
-
-{% block content %}
-    <form action="{% url 'index' %}" method="post">
+    {% endblock additional_css %}
+</head>
+<body>
+    {% block content %} 
+    <form action="{% url 'add' %}" method="post">
     {% csrf_token %}
     <div class="container container-event">
         <h1>Додайте подію</h1>

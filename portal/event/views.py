@@ -11,7 +11,7 @@ from event.forms import EditForm, AddForm
 
 class EventListView(ListView):
     model = Event
-    # context_object_name = ""
+    context_object_name = "events"
     template_name = "event/index.html"
 
 class AddCreateView(CreateView):

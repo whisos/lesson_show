@@ -35,20 +35,19 @@
 {% block content %}
         <h1>Події</h1>
         <a href="{% url 'add' %}" class="col-12 btn btn-primary mb-2">Додати подію</a>
-        
+
         <ul class="event-ul">
-            {% for Event in object_list %}
+        {% for event in object_list %}
             <li class="event-li">
-                <div class="card"><div class="card-body">
-                    <h2 class="card-title">{{Event.name}}</h2>
-                    <div class="card-text">
-                        <p>{{Event.discription}}</p>
-                        <p>{{Event.time}}</p>
-                        <p>{{Event.date}}</p>
-                    </div>
-                </div></div>
+                <div class="card">
+                <p>{{event.name}}</p>
+                <p>{{event.discription}}</p>
+                <p>{{event.time}}</p>
+                <p>{{event.date}}</p>
+                </div>
             </li>
-            {% endfor %}
-        </ul>
-        <a href="{% url 'edit' %}">Редагувати</a>
+         {% endfor %}
+         </ul>
+
+         <a href="{% url 'edit' %}">Редагувати</a>
 {% endblock content %}
