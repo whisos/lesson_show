@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
 {% block title %}Registration Form{% endblock title %}
-{% block additional_css %}<link rel="stylesheet" href="{% static 'css/register.css' %}">{% endblock additional_css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
 {% block content %}
-    <div class="popup-form" id="registerPopupForm" style="display: none;">
+    <div class="popup-form" id="registerPopupForm">
         <h2>Registration</h2>
         <form id="registerForm" action="{% url 'register' %}" method="post">
             {% csrf_token %}
@@ -42,10 +41,8 @@
             </div>
             <div>
                 <button type="submit">Register</button>
-                <button type="button" id="closeBtn">Close</button>
             </div>
         </form>
     </div>
-    <button id="registerBtn">Register</button>
 {% endblock content %}
 
