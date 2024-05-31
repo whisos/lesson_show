@@ -48,7 +48,6 @@
 </head>
 <body>
     {% block content %} 
-    <form action="{% url 'index' %}" method="post">
     {% csrf_token %}
     <div class="container">
         <h1>Додайте подію</h1>
