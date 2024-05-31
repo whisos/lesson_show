@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Сайт з подіями{% endblock title %}
+{% block additional_css %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container-event {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .event-ul {
+            list-style: none;
+            padding: 0;
+        }
+        .event-li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+    </style>
+{% endblock additional_css %}
+{% block content %}
+        <h1>Події</h1>
+        <a href="{% url 'add' %}" class="col-12 btn btn-primary mb-2">Додати подію</a>
+        
+        <ul class="event-ul">
+            {% for Event in object_list %}
+            <li class="event-li">
+                <div class="card"><div class="card-body">
+                    <h2 class="card-title">{{Event.name}}</h2>
+                    <div class="card-text">
+                        <p>{{Event.discription}}</p>
+                        <p>{{Event.time}}</p>
+                        <p>{{Event.date}}</p>
+                    </div>
+                </div></div>
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'edit' %}">Редагувати</a>
+{% endblock content %}

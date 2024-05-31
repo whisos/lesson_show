@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Створити нове голосування{% endblock title %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <label for="poll-text" class="form-label"><h2>Питання:</h2></label>
+    <input type="text" id="poll-text" name="poll-text" class="form-control" required>
+
+    <h2>Опції (залишіть непотрібні поля пустими):</h2>
+    <label for="choice-text-1" class="form-label">Опція 1 (обов'язково):</label>
+    <input type="text" id="choice-text-1" name="choice-text-1" class="form-control" required>
+    <label for="choice-text-2" class="form-label">Опція 2 (обов'язково):</label>
+    <input type="text" id="choice-text-2" name="choice-text-2" class="form-control" required>
+    <label for="choice-text-3" class="form-label">Опція 3:</label>
+    <input type="text" id="choice-text-3" name="choice-text-3" class="form-control">
+    <label for="choice-text-4" class="form-label">Опція 4:</label>
+    <input type="text" id="choice-text-4" name="choice-text-4" class="form-control">
+    <label for="choice-text-5" class="form-label">Опція 5:</label>
+    <input type="text" id="choice-text-5" name="choice-text-5" class="form-control">
+
+    <input type="submit" value="Створити" class="btn btn-primary mt-2">
+</form>
+{% endblock content %}

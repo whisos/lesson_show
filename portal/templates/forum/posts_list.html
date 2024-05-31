@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+    
+    
+    {% block content %}
+    <div class="row main-content">
+        <div class="col">
+            <h1>Посты на тему: {{ theme.name }}</h1>
+            <a href="{% url 'forum:post_add' %}?theme={{ theme.pk }}"><h3>Создать новый пост</h3></a>
+            {% for post in post %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <a href="{% url 'forum:post_detail' post.pk %}"><h5 class="card-title">{{ post.title }}</h5></a>
+                      <small-text class="card-subtitle mb-2 text-body-secondary">{{ post.author }}</small-text>
+                      <small-text class="card-subtitle mb-2 text-body-secondary">{{ post.created_at }}</small-text>
+                      <a href="{% url 'forum:post_update' post.pk %}"><h6 class="card-subtitle mb-2 text-body-secondary">Изменить пост</h6></a>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.number|add:-1 }}">Previous</a>
+
+            </li>
+            {% endif %}
+            {% for page_num in page_obj.paginator.page_range %}
+                <li class="page-item {% if page_obj.number == page_num %}active {% endif %}"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <li class="page-item"> 
+                <a class="page-link" href="?page={{ page_obj.number|add:1 }}">Next</a>
+            </li>
+            {% endif %}
+
+                </ul>
+            </nav>           
+
+        </div>
+    </div>
+    {% endblock %}

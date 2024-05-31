@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Голосування{% endblock title %}
+{% block content %}
+{% for poll in object_list%}
+    <div class="card mt-3">
+        <div class="card-body">
+        <h3 class="card-title"><a href="{% url 'voting_poll' poll.pk %}">{{poll.text}}</a></h3>
+        <p class="card-text text-secondary">{{poll.published_on}}</p>
+        </div>
+    </div>
+{% endfor %}
+<a href="{% url 'create_poll' %}" class="btn btn-primary mt-2">Створити голосування</a>
+{% endblock content %}

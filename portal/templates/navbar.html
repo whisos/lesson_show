@@ -1,0 +1,31 @@
+<div class="col-xs-12 col-sm-4 col-lg-2 mt-2">
+<ul class="nav flex-sm-column nav-fill nav-tabs nav-stacked">
+    <li class="nav-item">
+        <a href={% url 'main_page' %} class="nav-link">Головна сторінка</a>
+    </li>
+    {% if user.is_authenticated %}
+    <li class="nav-item">
+        <a href={% url 'profile' %} class="nav-link">Мій профіль</a>
+    </li>
+    <li class="nav-item">
+        <a href={% url 'logout' %} class="nav-link logout-btn">Вийти з акаунту</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a href={% url 'register' %} class="nav-link" id="registerBtn">Зареєструватися</a>
+    </li>
+    <li class="nav-item">
+        <a href={% url 'login' %} class="nav-link" id="loginBtn">Увійти в акаунт</a>
+    </li>
+    {% endif %}
+    <li class="nav-item">
+        <a href={% url 'event_list' %} class="nav-link">Події</a>
+    </li>
+    <li class="nav-item">
+        <a href={% url 'voting_list' %} class="nav-link">Голосування</a>
+    </li>
+    <li class="nav-item">
+        <a href={% url 'forum:themes_list' %} class="nav-link">Форум</a>
+    </li>
+</ul>
+</div>
