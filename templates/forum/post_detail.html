@@ -2,7 +2,7 @@
 {% load static %}
 
     {% block content %}
-    <div class="row main-content">
+    <div class="row main-content mb-5" style="border: 2px solid;">
         <div class="col">
         <h4>{{ post.author }}</h4>
         <h1>{{ post.title }}</h1>
@@ -11,19 +11,11 @@
     </div>
 
 
-    <div class="add-comment mt-4">
-        <h2>Комментарии:</h2>
-        <h4>Добавить комментарий</h4>
-        <form action="{% url 'forum:post_detail' post.id %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ comment_form.as_p }}
-            <button type="submit" class="btn btn-primary">Отправить</button>
-        </form>
-    </div>
     
-    <div class="comments mt-4">
+    <div class="comments">
+        <h2>Сообщения:</h2>
         {% for comment in post.comments.all %}
-            <div class="comment mb-2">
+            <div class="comment" style="border: 1px solid;">
                 <small>{{ comment.author.username }}</small> <small>{{ comment.created_at }}</small>
                 <p>{{ comment.content }}</p>
                 <form action="{% url 'forum:comment-like-toggle' comment.id %}" method="post">
@@ -36,6 +28,15 @@
         {% empty %}
             <p>Комментариев нет.</p>
         {% endfor %}
+    </div>
+
+    <div class="add-comment mt-4">
+        <h4>Ответить</h4>
+        <form action="{% url 'forum:post_detail' post.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
     </div>
     
     {% endblock %}
