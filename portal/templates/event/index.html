@@ -38,23 +38,19 @@
         
         <ul>
             <li>
-                <!-- {% block content1 %}
 
                 {% for task in tasks %}
                 <div class="card">
-                <p>{{Event.discription}}</p>
                 <p>{{Event.name}}</p>
+                <p>{{Event.discription}}</p>
+                <p>{{Event.time}}</p>
+                <p>{{Event.date}}</p>
                 </div>
                 {% endfor %}
 
-                {% endblock %} -->
                 <a href="{% url 'edit' %}">Редагувати</a>
             </li>
-            <li>
-                <h3></h3>
-                <p></p>
-                <p></p>
-            </li>
-            <!-- Додайте інші події тут -->
+            
+
         </ul>
 {% endblock content %}
