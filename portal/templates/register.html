@@ -3,7 +3,7 @@
 {% block title %}Registration Form{% endblock title %}
 {% block additional_css %}<link rel="stylesheet" href="{% static 'css/register.css' %}">{% endblock additional_css %}
 {% block content %}
-    <div class="popup-form" id="registerPopupForm" style="display: none;">
+    <div class="popup-form" id="registerPopupForm">
         <h2>Registration</h2>
         <form id="registerForm" action="{% url 'register' %}" method="post">
             {% csrf_token %}
