@@ -1,30 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Сайт з подіями{% endblock title %}
 {% block additional_css %}
+    <link rel="stylesheet" href="{% static 'css/event.css' %}">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        ul {
+        .event-ul {
             list-style: none;
             padding: 0;
         }
-        li {
+        .event-li {
             margin-bottom: 10px;
             padding: 10px;
             background-color: #f0f0f0;
@@ -33,24 +17,22 @@
     </style>
 {% endblock additional_css %}
 {% block content %}
-        <h1>Події</h1>
-        <a href="{% url 'add' %}">Додати подію</a>
+    <div class="container container-event">
+        <h1 class="white-background">Події</h1>
+        <a href="{% url 'add' %}" class="white-background">Додати подію</a>
         
-        <ul>
-            <li>
-
-                {% for task in tasks %}
+        <ul class="white-background event-ul">
+            {% for task in tasks %}
+            <li class="event-li">
                 <div class="card">
                 <p>{{Event.name}}</p>
                 <p>{{Event.discription}}</p>
                 <p>{{Event.time}}</p>
                 <p>{{Event.date}}</p>
                 </div>
-                {% endfor %}
-
-                <a href="{% url 'edit' %}">Редагувати</a>
             </li>
-            
-
+            {% endfor %}
+            <a href="{% url 'edit' %}" class="white-background">Редагувати</a>
         </ul>
+    </div>
 {% endblock content %}
